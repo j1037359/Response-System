@@ -13,30 +13,34 @@ import pickle
 from codecs import open as copen
 from sklearn.metrics.pairwise import cosine_similarity
 
-if __name__ =="__main__":
-    kkma=Kkma()
-    temp=kkma.pos(u'준비')
+kkma=Kkma()
+temp=kkma.pos(u'준비')
 
 
 
 
-    while 1:
-        num = raw_input("1.가상강의\n2.장학\n3.학사\n4.휴학및복학\n")
+while 1:
+    num = raw_input("1.가상강의\n2.장학\n3.학사\n4.휴학및복학\n")
 
-        fname = "microphone-results.wav"
+    fname = "microphone-results.wav"
 
-        # 마이크로 음성 획득
-        r = sr.Recognizer()
+    # 마이크로 음성 획득
+    r = sr.Recognizer()
 
-        with open('./DataSet/vector_'+num+'.txt', 'rb') as f:
-            vector = pickle.load(f)
+    with open('./DataSet/vector_'+num+'.txt', 'rb') as f:
+    
+        vector = pickle.load(f)
 
-        with open('./DataSet/feature_'+num+'.txt', 'rb') as f:
-            feature = pickle.load(f)
+        
+    with open('./DataSet/feature_'+num+'.txt', 'rb') as f:
+    
+        feature = pickle.load(f)
 
-        with sr.Microphone() as source:
-            print("Say something!")
-            audio = r.listen(source)
+        
+    with sr.Microphone() as source:
+    
+        print("Say something!")
+        audio = r.listen(source)
 
         WAV_FILE = path.join(path.dirname(path.realpath(__file__)), fname)
 
