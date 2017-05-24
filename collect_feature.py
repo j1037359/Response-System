@@ -8,7 +8,7 @@ kkma=Kkma()
 
 feature_list=set()
 
-#Q&A 데이터에서 feature 추출
+#Q&A 데이터에서 명사와 형용사 feature 추출
 for i in os.listdir('./DataSet/Leave/'):
     print i
     f=copen('./DataSet/Leave/'+str(i),'r','utf-8')

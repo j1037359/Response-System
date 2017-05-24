@@ -4,7 +4,7 @@ import os
 import pickle
 
 for i in range(1,5):
-
+    #분리된 데이터를 dictionaly 형식으로 저장
     temp={}
     print i
     count=1
