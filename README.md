@@ -20,12 +20,41 @@
 ### 음성인식
 >SpeechRecognition의 Google Cloud Speech API를 이용
 
+
+    import speech_recognition as sr
+
+    #음성파일획득
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Say something!")
+        audio = r.listen(source)
+
+
+    #구글 음성인식
+    try:
+        print("Google Speech Recognition thinks you said " + r.recognize_google(audio))
+    except sr.UnknownValueError:
+        print("Google Speech Recognition could not understand audio")
+    except sr.RequestError as e:
+        print("Could not request results from Google Speech Recognition service; {0}".format(e))
+
+
+
 ### 유사도 계산
 >scikit-learn에서 제공하는 코사인 유사도를 분석을 통해 사용자의 질의와 가장 유사한 질의를 선택
 
+
+    from sklearn.metrics.pairwise import cosine_similarity
+    cosine_similarity(result, vector)
+
 ### 음성합성
 >gTTS를 이용하여 사용자의 질의에 해당하는 답변을 mp3파일로 생성하여 사용자에게 출력
-
+    
+    
+    #gTTS를 통한 음성합성
+    tts = gTTS(text=result_answer, lang='ko')
+    tts.save("result.mp3")
+    os.system("result.mp3")
 ## 참고문서
 [Speech Recognition] (https://github.com/Uberi/speech_recognition)
 
